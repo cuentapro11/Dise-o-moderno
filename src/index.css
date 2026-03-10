@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 20% 97%;
+    --foreground: 30 12% 22%;
+    --card: 40 18% 98%;
+    --card-foreground: 30 12% 22%;
+    --popover: 40 18% 98%;
+    --popover-foreground: 30 12% 22%;
+    --primary: 33 45% 54%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 34 15% 93%;
+    --secondary-foreground: 30 12% 22%;
+    --muted: 34 12% 91%;
+    --muted-foreground: 30 10% 48%;
+    --accent: 33 45% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 33 20% 82%;
+    --input: 33 20% 82%;
+    --ring: 33 45% 54%;
+    --radius: 0.5rem;
+    --gold: 33 45% 54%;
+    --gold-light: 33 40% 72%;
+    --gold-dark: 33 50% 38%;
+    --cream: 40 20% 97%;
+    --cream-dark: 34 15% 93%;
+    --sidebar-background: 40 18% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 10% 10%;
+    --foreground: 30 20% 90%;
+    --card: 30 10% 12%;
+    --card-foreground: 30 20% 90%;
+    --popover: 30 10% 12%;
+    --popover-foreground: 30 20% 90%;
+    --primary: 33 45% 54%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 10% 18%;
+    --secondary-foreground: 30 20% 90%;
+    --muted: 30 10% 18%;
+    --muted-foreground: 30 15% 60%;
+    --accent: 33 45% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 30 10% 22%;
+    --input: 30 10% 22%;
+    --ring: 33 45% 54%;
+  }
+
+  * { @apply border-border; }
+
+  body {
+    @apply text-foreground;
+    font-family: 'Lato', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+/* ============================================================
+   PAPEL ALGODÓN PERLADO — blanco casi puro, textura lino suave
+   Referencia: sobre de boda premium, papel cotton 100%
+   ============================================================ */
+
+html, body { min-height: 100%; }
+
+html {
+  scroll-behavior: smooth;
+
+  /* Base: blanco muy levemente cálido, casi puro como la imagen */
+  background-color: #f7f5f1;
+
+  background-image:
+
+    /* Ruido fractal suave — fibras de algodón/lino muy finas */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='cotton'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.88  0 0 0 0 0.86  0 0 0 0 0.82  0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23cotton)'/%3E%3C/svg%3E"),
+
+    /* Segunda capa de ruido más fino — detalle micro de fibras */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='fiber'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.85  0 0 0 0 0.83  0 0 0 0 0.80  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23fiber)'/%3E%3C/svg%3E"),
+
+    /* Fibras de lino horizontales — muy sutiles */
+    repeating-linear-gradient(
+      180deg,
+      transparent 0px,
+      transparent 4px,
+      rgba(200, 195, 185, 0.025) 4px,
+      rgba(200, 195, 185, 0.025) 5px
+    ),
+
+    /* Fibras cruzadas diagonales — trama del papel cotton */
+    repeating-linear-gradient(
+      52deg,
+      transparent 0px,
+      transparent 22px,
+      rgba(210, 205, 195, 0.018) 22px,
+      rgba(210, 205, 195, 0.018) 23px
+    ),
+
+    /* Contra-diagonal muy tenue */
+    repeating-linear-gradient(
+      128deg,
+      transparent 0px,
+      transparent 16px,
+      rgba(195, 190, 180, 0.015) 16px,
+      rgba(195, 190, 180, 0.015) 17px
+    ),
+
+    /* Suavísima variación de iluminación — efecto tridimensional del papel */
+    radial-gradient(ellipse 120% 80% at 30% 20%, rgba(255,255,255,0.4) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 120% at 70% 80%, rgba(230,225,215,0.15) 0%, transparent 60%),
+
+    /* Viñeta perimetral muy suave — como la imagen de referencia */
+    radial-gradient(ellipse 100% 100% at 50% 50%, transparent 50%, rgba(180,172,158,0.06) 100%);
+
+  background-attachment: fixed;
+  background-size:
+    500px 500px,
+    300px 300px,
+    100% 5px,
+    100% 23px,
+    100% 17px,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+}
+
+/* Capa adicional de micro-grano perla encima de todo */
+html::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Brillo perlado muy sutil en diagonal — como el nacarado del papel */
+  background-image:
+    repeating-linear-gradient(
+      75deg,
+      transparent 0px,
+      transparent 60px,
+      rgba(255, 253, 248, 0.08) 60px,
+      rgba(255, 253, 248, 0.08) 61px
+    ),
+    repeating-linear-gradient(
+      -15deg,
+      transparent 0px,
+      transparent 80px,
+      rgba(220, 215, 205, 0.04) 80px,
+      rgba(220, 215, 205, 0.04) 81px
+    );
+}
+
+/* Body y root completamente transparentes */
+body {
+  background: transparent !important;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Todas las secciones transparentes — el papel se ve a través */
+section, footer, header, main {
+  background: transparent !important;
+}
+
+/* ============================================================
+   SCROLL SHADOW
+   ============================================================ */
+.scroll-shadow {
+  box-shadow:
+    inset 40px 0 30px -30px rgba(160, 150, 130, 0.1),
+    inset -40px 0 30px -30px rgba(160, 150, 130, 0.1);
+}
+
+/* ============================================================
+   COMPONENTES
+   ============================================================ */
+@layer components {
+  .font-display { font-family: 'Playfair Display', serif; }
+  .font-heading { font-family: 'Cormorant Garamond', serif; }
+  .font-body    { font-family: 'Lato', sans-serif; }
+
+  .ornament-border {
+    border: 1px solid hsl(var(--gold-light));
+    position: relative;
+  }
+  .ornament-border::before,
+  .ornament-border::after {
+    content: '❧';
+    position: absolute;
+    color: hsl(var(--gold));
+    font-size: 1.2rem;
+  }
+  .ornament-border::before {
+    top: -0.6rem; left: 50%;
+    transform: translateX(-50%);
+  }
+  .ornament-border::after {
+    bottom: -0.6rem; left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+  }
+
+  .gold-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      hsl(var(--gold-light)) 15%,
+      hsl(var(--gold)) 50%,
+      hsl(var(--gold-light)) 85%,
+      transparent 100%
+    );
+    position: relative;
+  }
+  .gold-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px; height: 8px;
+    background: hsl(var(--gold));
+    border-radius: 50%;
+  }
+
+  .corner-ornament { position: relative; }
+  .corner-ornament::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid hsl(var(--gold-light));
+    pointer-events: none;
+  }
+
+  .section-divider {
+    background-image: linear-gradient(90deg,
+      transparent 0%,
+      hsl(var(--gold-light) / 0.4) 10%, transparent 20%,
+      transparent 30%, hsl(var(--gold-light) / 0.3) 40%,
+      transparent 45%, transparent 50%,
+      hsl(var(--gold-light) / 0.5) 50%, transparent 55%,
+      transparent 60%, hsl(var(--gold-light) / 0.3) 70%,
+      transparent 80%, hsl(var(--gold-light) / 0.4) 90%,
+      transparent 100%
+    );
+    height: 2px;
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #ede9e0; }
+::-webkit-scrollbar-thumb { background: hsl(var(--gold-light)); border-radius: 3px; }
+
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.25); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+  60% { transform: scale(1); }
+}
+@keyframes shimmer {
+  0%, 100% { opacity: 0.7; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(1.4); }
+}
+@keyframes gentle-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes camera-flash {
+  0%, 90%, 100% { opacity: 1; filter: brightness(1); }
+  95% { opacity: 1; filter: brightness(1.8); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+
+.animate-heartbeat  { animation: heartbeat 1.5s ease-in-out infinite; }
+.animate-shimmer    { animation: shimmer 2.5s ease-in-out infinite; }
+.animate-gentle-bounce { animation: gentle-bounce 2s ease-in-out infinite; }
+.animate-camera-flash  { animation: camera-flash 3s ease-in-out infinite; }
+.animate-wiggle     { animation: wiggle 1.5s ease-in-out infinite; }
